@@ -9,7 +9,7 @@ public class SuperArray{
     }
     size = 0;
   }
-  //Constructor creates a blank list of a certain starting size;
+  //Constructor, creates a blank list with starting length startinCapacity;
  public SuperArray(int startingCapacity){
    data = new String[startingCapacity];
    for (int counter = 0; counter < data.length; counter++){
@@ -17,6 +17,7 @@ public class SuperArray{
    }
    size = 0;
  }
+
   //Clears entire list, setting every element to null;
   public void clear(){
     for(int counter = 0; counter < data.length; counter++){
@@ -113,22 +114,27 @@ public class SuperArray{
  }
  //inserts an element into a string, bumping elements accordingly;
  public void add(int index, String element){
-   if (index < 0 || size < index){
-     throw new IndexOutOfBoundsException();
-   }
-   else {
-     for(int counter = size; counter >= index; counter--){
-       data[counter + 1] = data[counter];
-     }
-     data[index] = element;
-     size++;
-   }
+if (index < 0 || index > size()){
+   throw new IndexOutOfBoundsException();
+}
+if (data.length == size()){
+   resize();
+}
+String[] data2 = new String[data.length];
+for (int counter = 0; counter < index; counter++){
+   data2[counter] = data[counter];
+}
+data2[index] = element;
+for (int counter2 = index; counter2 < size(); counter2++){
+   data2[counter2 + 1] = data[counter2];
+}
+data = data2;
+size = size + 1;
  }
  //removes an element from a list at a certain index, shifts list accordingly;
  public String remove(int index){
     if (index < 0 || index >= size){
-      System.out.println("WRONG INDEX YOU FOOL");
-      return null;
+    throw new IndexOutOfBoundsException();
   }
   String[] answer = new String[data.length];
   resize();
