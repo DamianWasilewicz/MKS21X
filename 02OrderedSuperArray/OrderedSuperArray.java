@@ -7,7 +7,7 @@ public class OrderedSuperArray extends SuperArray{
   public OrderedSuperArray(int startingCapacity){
     super(startingCapacity);
   }
-  // creates a list with the elemnts from array;
+  // creates a list with the elements from array;
   public OrderedSuperArray(String[] array){
     super(array.length);
     for(int counter = 0; counter < array.length; counter++){
