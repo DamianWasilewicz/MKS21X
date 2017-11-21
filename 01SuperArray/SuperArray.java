@@ -9,13 +9,6 @@ public class SuperArray{
     }
     size = 0;
   }
-  public SuperArray(int startingCapacity){
-    data = new String[startingCapacity];
-    for (int counter = 0; counter < data.length; counter++){
-      data[counter] = "";
-    }
-    size = 0;
-  }
   //Clears entire list, setting every element to null;
   public void clear(){
     for(int counter = 0; counter < data.length; counter++){
@@ -55,7 +48,8 @@ public class SuperArray{
  //returns the element at a certain index of the list;
  public String get(int index){
    if (index < 0 || index >= size){
-   throw new IndexOutOfBoundsException();
+     System.out.println("WRONG INDEX, YOU FOOL");
+     return null;
    }
    else{
      return data[index];
@@ -64,7 +58,8 @@ public class SuperArray{
  //sets an element at a certain index to another element of choice;
  public String set(int index, String element){
   if (index < 0 || index >= size){
-   throw new IndexOutOfBoundsException();
+   System.out.println("WRONG INDEX, YOU FOOL");
+   return null;
   }
   else {
   String returned = data[index];
@@ -111,40 +106,23 @@ public class SuperArray{
    return -1;
  }
  //inserts an element into a string, bumping elements accordingly;
- //public void add(int index, String element){
-  // if (index < 0 || size < index){
-  //   throw new IndexOutOfBoundsException();
-   //}
-  // else {
-  //   for(int counter = size; counter >= index; counter--){
-    //   data[counter + 1] = data[counter];
-     //}
-    // data[index] = element;
-    // size++;
-  // }
- //}
  public void add(int index, String element){
-if (index < 0 || index > size()){
-   throw new IndexOutOfBoundsException();
-}
-if (data.length == size()){
-   resize();
-}
-String[] data2 = new String[data.length];
-for (int x = 0; x < index; x++){
-   data2[x] = data[x];
-}
-data2[index] = element;
-for (int x = index; x < size(); x++){
-   data2[x + 1] = data[x];
-}
-data = data2;
-size = size + 1;
+   if (index < 0 || size < index){
+     System.out.println("WRONG INDEX YOU FOOL");
+   }
+   else {
+     for(int counter = size; counter >= index; counter--){
+       data[counter + 1] = data[counter];
+     }
+     data[index] = element;
+     size++;
+   }
  }
  //removes an element from a list at a certain index, shifts list accordingly;
  public String remove(int index){
     if (index < 0 || index >= size){
-      throw new IndexOutOfBoundsException();
+      System.out.println("WRONG INDEX YOU FOOL");
+      return null;
   }
   String[] answer = new String[data.length];
   resize();
