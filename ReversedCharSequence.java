@@ -3,7 +3,7 @@ public class ReversedCharSequence implements CharSequence{
     private String RevSeq;
     public ReversedCharSequence(String Seq){
 	RevSeq = "";
-	for(int counter = 0; counter < Seq.length(); counter++){
+	for(int counter = Seq.length() - 1; counter > -1; counter--){
 	    RevSeq+= Seq.charAt(counter);
 	}
     }
@@ -14,7 +14,19 @@ public class ReversedCharSequence implements CharSequence{
 	return RevSeq.length();
     }
     public CharSequence subSequence(int start, int end){
-	String Sub = new ReversedCharSequence(RevSeq.substring(start, end));
-	return Sub;
+	ReversedCharSequence SubFirst = new ReversedCharSequence(RevSeq.substring(start, end));
+  String SubMiddle = "";
+  for(int counter = 0; counter < SubFirst.length(); counter++){
+    SubMiddle+= SubFirst.charAt(counter);
+  }
+  ReversedCharSequence SubFinal = new ReversedCharSequence(SubMiddle);
+	return SubFinal;
+    }
+    public String toString(){
+      String answer = "";
+      for (int counter = 0; counter < RevSeq.length(); counter++){
+        answer+= RevSeq.charAt(counter);
+      }
+      return answer;
     }
 }
