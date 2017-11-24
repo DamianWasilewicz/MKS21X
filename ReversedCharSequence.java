@@ -1,4 +1,5 @@
 public class ReversedCharSequence implements CharSequence{
+
     private String RevSeq;
     public ReversedCharSequence(String Seq){
 	RevSeq = "";
@@ -17,5 +18,3 @@ public class ReversedCharSequence implements CharSequence{
 	return Sub;
     }
 }
-	    
-	
