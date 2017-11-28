@@ -1,4 +1,4 @@
-public abstract Class LibraryBook extends Book implements Comparable<LibraryBook>{
+public abstract class LibraryBook extends Book implements Comparable<LibraryBook>{
     private String callNumber;
     public LibraryBook(String Author, String Title, String ISBN, String callNumber){
 	super(Author, Title, ISBN);
@@ -14,12 +14,12 @@ public abstract Class LibraryBook extends Book implements Comparable<LibraryBook
     }
     public abstract void returned(){
     }
-    public abstact String circulationStatus(){
+    public abstract String circulationStatus(){
     }
     public int compareTo(LibraryBook other){
 	return this.getcallNumber().compareTo(other.getcallNumber());
     }
     public String toString(){
-	super.toString + ", " + callNumber + ", " + circulationStatus;
+	super.toString() + ", " + callNumber + ", " + circulationStatus;
     }
 }
