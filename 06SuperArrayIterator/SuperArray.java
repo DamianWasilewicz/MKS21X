@@ -167,7 +167,7 @@ public boolean remove(String element){
     return true;
     }
   }
-  public Iterator<Integer> iterator(){
-    return new SuperArrayIterator(data);
+  public Iterator<String> iterator(){
+    return new SuperArrayIterator(this);
   }
 }

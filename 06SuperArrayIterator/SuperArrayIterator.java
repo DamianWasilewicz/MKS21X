@@ -1,10 +1,9 @@
 import java.util.*;
 public class SuperArrayIterator implements Iterator<String>{
   int current;
-  String[] data;
-  public SuperArrayIterator(String[] data){
-    this.data = data;
-    int current = 0;
+  SuperArray array;
+  public SuperArrayIterator(SuperArray array){
+    this.array = array;
   }
   public void remove(){
     throw new UnsupportedOperationException();
@@ -15,9 +14,9 @@ public class SuperArrayIterator implements Iterator<String>{
     }else{
       System.exit(0);
     }
-    return data[current - 1];
+    return array.get(current - 1);
   }
   public boolean hasNext(){
-    return current <= data.length;
+    return current <= array.size();
   }
 }
