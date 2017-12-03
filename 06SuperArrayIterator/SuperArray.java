@@ -22,21 +22,28 @@ public class SuperArray implements Iterable<String>{
  public Iterator<String> iterator(){
    return new SuperArrayIterator(this);
  }
+ // New Iterator of type String;
  public class SuperArrayIterator implements Iterator<String>{
+   //int used for keeping track of what iterator is up to in array;
    int current;
+   //SuperArray being fed into iterator;
    SuperArray ITarray;
+   //creates Iterator;
    public SuperArrayIterator(SuperArray array){
     ITarray = array;
    }
+   //returns next item in array, exits if there is no next value;
    public String next(){
      if(!hasNext()){
       System.exit(0);
      }
      return ITarray.get(current++);
    }
+   //checks to see if there is more to iterate through;
    public boolean hasNext(){
      return current < ITarray.size();
    }
+   //unsupported operation, returns exception;
    public void remove(){
      throw new UnsupportedOperationException();
    }
