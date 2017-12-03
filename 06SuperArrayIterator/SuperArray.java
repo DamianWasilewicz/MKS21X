@@ -18,7 +18,29 @@ public class SuperArray implements Iterable<String>{
    }
    size = 0;
  }
-
+ // constructs new iterator (SuperArrayIterator);
+ public Iterator<String> iterator(){
+   return new SuperArrayIterator(this);
+ }
+ public class SuperArrayIterator implements Iterator<String>{
+   int current;
+   SuperArray ITarray;
+   public SuperArrayIterator(SuperArray array){
+    ITarray = array;
+   }
+   public String next(){
+     if(!hasNext()){
+      System.exit(0);
+     }
+     return ITarray.get(current++);
+   }
+   public boolean hasNext(){
+     return current < ITarray.size();
+   }
+   public void remove(){
+     throw new UnsupportedOperationException();
+   }
+ }
   //Clears entire list, setting every element to null;
   public void clear(){
     for(int counter = 0; counter < data.length; counter++){
@@ -166,8 +188,5 @@ public boolean remove(String element){
     }
     return true;
     }
-  }
-  public Iterator<String> iterator(){
-    return new SuperArrayIterator(this);
   }
 }
