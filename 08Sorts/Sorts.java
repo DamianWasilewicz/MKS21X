@@ -41,16 +41,5 @@ public class Sorts{
         }
        }
      }
-  }
-  //used for testing;
-  public static void main(String[]artie){
-       int[] randish = new int[15];
-       for(int i = 0 ; i < randish.length; i++){
-           randish[i] = 15;
-       }
-       System.out.println(name());
-       System.out.println(Arrays.toString(randish));
-       selectionSort(randish);
-       System.out.println(Arrays.toString(randish));
    }
 }
