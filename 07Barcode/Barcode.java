@@ -1,5 +1,9 @@
 import java.util.*;
 public class Barcode implements Comparable<Barcode>{
+  public static void main(String[] args){
+    Barcode Test = new Barcode(12345);
+    
+  }
   //This will be the Field Variable for Barcode,
   //taking in the Zip number as a String
   private String Zip;
