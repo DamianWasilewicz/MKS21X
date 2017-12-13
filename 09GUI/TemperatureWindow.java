@@ -8,10 +8,10 @@ public class TemperatureWindow extends JFrame implements ActionListener{
     private JLabel l;
     private JTextField t;
     private JCheckBox cf;
-    private JCheckbox fc;
+    private JCheckBox fc;
     public TemperatureWindow(){
 	this.setTitle("Temperature Converter");
-	this.setSize(500,500);
+	this.setSize(500,100);
 	this.setLocation(100,100);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -19,10 +19,14 @@ public class TemperatureWindow extends JFrame implements ActionListener{
 	pane.setLayout(new FlowLayout());
 
 	b = new JButton("Convert Temp");
-        l = new JLabel("Conver that Temperature!");
+        l = new JLabel("Convert that Temperature!");
 	t = new JTextField(4);
 	cf = new JCheckBox("C to F");
 	fc = new JCheckBox("F to C");
+  b.addActionListener(this);
+  t.addActionListener(this);
+  cf.addActionListener(this);
+  fc.addActionListener(this);
 	pane.add(b);
 	pane.add(l);
 	pane.add(t);
@@ -32,6 +36,17 @@ public class TemperatureWindow extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
 	String event = e.getActionCommand();
 	System.out.println(event);
-	if(event.equals.("Convert Temp")){
+	if(event.equals("Convert Temp")){
 	    if(cf.isSelected()){
-		t.setText(
+		t.setText("" + ((double)((((Integer.parseInt(t.getText())) * 9)/5) + 32)));
+  }
+  if(fc.isSelected()){
+    t.setText("" + ((double)((((Integer.parseInt(t.getText())) - 32)*5)/9)));
+  }
+}
+}
+public static void main(String[] args){
+  TemperatureWindow g = new TemperatureWindow();
+  g.setVisible(true);
+}
+}
