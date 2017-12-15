@@ -36,13 +36,21 @@ public class TemperatureWindow extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
 	String event = e.getActionCommand();
 	System.out.println(event);
+  try{
 	if(event.equals("Convert Temp")){
+    if(cf.isSelected() && fc.isSelected()){
+      System.out.println("You can't have both checkboxes selected, silly billy");
+      System.exit(1);
+    }
 	    if(cf.isSelected()){
 		t.setText("" + ((double)((((Integer.parseInt(t.getText())) * 9)/5) + 32)));
   }
   if(fc.isSelected()){
     t.setText("" + ((double)((((Integer.parseInt(t.getText())) - 32)*5)/9)));
   }
+}
+}catch(IllegalArgumentException ex){
+  System.out.println("You must put in a number, silly");
 }
 }
 public static void main(String[] args){
