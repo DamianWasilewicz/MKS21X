@@ -1,9 +1,16 @@
 import java.util.*;
 public class Barcode implements Comparable<Barcode>{
   public static void main(String[] args){
-    Barcode Test = new Barcode("12345");
-    
-  }
+    String[]badBarcodes = {"|||:::||:::||:::||:::||:::||:::",
+      "|||:::||:::||:::||:::||:::||:::||||",
+      "|||:::||:::||:::||:::||:::||::::",
+      ":||:::||:::||:::||:::||:::||:::|",
+      "||:|::||z::|:|::||::f:::|||:|::|",
+      "|:::||||:::a::||||::::::||::||:|",
+      "|||:::||:::||:::||:::||::::::|||"    };
+  Barcode test = new Barcode("084518");
+   Barcode.toZip(badBarcodes[6]);
+}
   //This will be the Field Variable for Barcode,
   //taking in the Zip number as a String
   private String Zip;
@@ -132,23 +139,36 @@ public class Barcode implements Comparable<Barcode>{
    convertToNumber(code.substring(21,26))) % 10 == convertToNumber(code.substring(26,31)));
 
   }
+  public static boolean checkInput(String code){
+    if(code.length() != 32){
+      return false;
+    }
+    if(code.charAt(0) != '|' ||
+    code.charAt(code.length()-1) != '|'){
+      return false;
+    }
+    return true;
+  }
  public static boolean CodeChecker(String code){
    //verifies to see that inputted code is in correct format
-   if(code.length() != 32 ||
-   (code.charAt(0) != '|' || code.charAt(code.length()-1) != '|')){
-     return false;
-   }
    for(int counter = 0; counter < code.length(); counter++){
      if(code.charAt(counter) != ':' && code.charAt(counter) != '|'){
        return false;
      }
    }
-   CheckSum(code);
    return true;
  }
  public static String toZip(String code){
    //returns Zip version of inputted code;
-        CodeChecker(code);
+          if (!CodeChecker(code)){
+            throw new IllegalArgumentException();
+          }
+          if (!checkInput(code)){
+            throw new IllegalArgumentException();
+          }
+          if (!CheckSum(code)){
+            throw new IllegalArgumentException();
+          }
         String answer = "";
         answer+=
         convertToNumber(code.substring(1,6)) + "" +
