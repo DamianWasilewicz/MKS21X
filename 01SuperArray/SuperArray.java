@@ -1,3 +1,4 @@
+import java.util.*;
 public class SuperArray{
   private String[] data;
   private int size;
@@ -48,8 +49,7 @@ public class SuperArray{
  //returns the element at a certain index of the list;
  public String get(int index){
    if (index < 0 || index >= size){
-     System.out.println("WRONG INDEX, YOU FOOL");
-     return null;
+      throw new IndexOutOfBoundsException();
    }
    else{
      return data[index];
@@ -58,8 +58,7 @@ public class SuperArray{
  //sets an element at a certain index to another element of choice;
  public String set(int index, String element){
   if (index < 0 || index >= size){
-   System.out.println("WRONG INDEX, YOU FOOL");
-   return null;
+    throw new IndexOutOfBoundsException();
   }
   else {
   String returned = data[index];
@@ -69,14 +68,14 @@ public class SuperArray{
  }
  //doubles the size of the superarray for accomodation purposes;
  private void resize(){
-   String[] newdata = new String[data.length * 2];
+   int len = data.length;
+   String[] newdata = new String[data.length* 2];
+   if(len - size <= 5) {
    for(int counter = 0; counter < size; counter++){
      newdata[counter] = data[counter];
    }
-   for(int counter2 = size; counter2 < data.length; counter2++){
-     newdata[counter2] = "";
-   }
    data = newdata;
+ }
  }
  //checks if a list contains a certain target string;
  public boolean contains(String target){
@@ -108,9 +107,10 @@ public class SuperArray{
  //inserts an element into a string, bumping elements accordingly;
  public void add(int index, String element){
    if (index < 0 || size < index){
-     System.out.println("WRONG INDEX YOU FOOL");
+     throw new IndexOutOfBoundsException();
    }
    else {
+     resize();
      for(int counter = size; counter >= index; counter--){
        data[counter + 1] = data[counter];
      }
@@ -121,8 +121,7 @@ public class SuperArray{
  //removes an element from a list at a certain index, shifts list accordingly;
  public String remove(int index){
     if (index < 0 || index >= size){
-      System.out.println("WRONG INDEX YOU FOOL");
-      return null;
+       throw new IndexOutOfBoundsException();
   }
   String[] answer = new String[data.length];
   resize();
